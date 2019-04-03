@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eu
+
+PROJ=$(pipenv --where 2>/dev/null)
+cd ${PROJ:?}
+
+# Write environment variables to .env
+PYTHONPATH=${PROJ}
+echo PYTHONPATH=${PYTHONPATH} >> .env

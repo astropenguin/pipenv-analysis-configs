@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu
+
+PROJ=$(pipenv --where 2>/dev/null)
+cd ${PROJ:?}
+
+# Write environment variables to .env
+IPYTHONDIR=${PROJ}/.ipython
+echo IPYTHONDIR=${IPYTHONDIR} >> .env
+
+# Create IPython profile
+mkdir -p ${IPYTHONDIR}
+pipenv run ipython profile create default --ipython-dir ${IPYTHONDIR}

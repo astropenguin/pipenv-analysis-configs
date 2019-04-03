@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu
+
+PROJ=$(pipenv --where 2>/dev/null)
+cd ${PROJ:?}
+
+# Write environment variables to .env
+JUPYTER_CONFIG_DIR=${PROJ}/.jupyter
+echo JUPYTER_CONFIG_DIR=${JUPYTER_CONFIG_DIR} >> .env
+
+# Create Jupyter kernel
+mkdir -p ${JUPYTER_CONFIG_DIR}
+pipenv run ipython kernel install --sys-prefix --profile default --display-name Default

@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+
+PROJ=$(pipenv --where 2>/dev/null)
+cd ${PROJ:?}
+
+# Write environment variables to .env
+MATPLOTLIBRC=${PROJ}/.matplotlib
+MPLCONFIGDIR=${PROJ}/.matplotlib
+echo MATPLOTLIBRC=${MATPLOTLIBRC} >> .env
+echo MPLCONFIGDIR=${MPLCONFIGDIR} >> .env
+
+# Create empty matplotlibrc and stylelib directory
+mkdir -p ${MATPLOTLIBRC}
+mkdir -p ${MPLCONFIGDIR}/stylelib
+touch ${MATPLOTLIBRC}/matplotlibrc
