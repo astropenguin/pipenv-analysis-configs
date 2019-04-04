@@ -1,8 +1,15 @@
 #!/bin/bash
 set -eu
 
+# Go to project home
 PROJ=$(pipenv --where 2>/dev/null)
-cd ${PROJ:?}
+cd ${PROJ:?Could not find project home}
+
+# Skip configuration if not installed
+if ! cat ${PROJ}/Pipfile | grep jupyter >/dev/null 2>&1
+then
+    exit 0
+fi
 
 # Write environment variables to .env
 JUPYTER_CONFIG_DIR=${PROJ}/.jupyter

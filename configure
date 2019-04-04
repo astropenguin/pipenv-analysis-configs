@@ -4,36 +4,14 @@ set -eu
 # existence check of pipenv
 if ! type pipenv >/dev/null 2>&1
 then
-    echo "Pipenv is not installed!"
+    echo "Pipenv is not installed"
     exit 1
 fi
 
-# existence check of Pipfile
-PROJ=$(pipenv --where 2>/dev/null)
-
-if [ -z "$PROJ" ]
-then
-    echo "Pipfile is not found!"
-    exit 1
-fi
-
-# run configure scripts
+# run configuration scripts
 CURDIR="$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)"
-PIPFILE=${PROJ}/Pipfile
 
 ${CURDIR}/configure-python
-
-if cat ${PIPFILE} | grep ipython >/dev/null 2>&1
-then
-    ${CURDIR}/configure-ipython
-fi
-
-if cat ${PIPFILE} | grep jupyter >/dev/null 2>&1
-then
-    ${CURDIR}/configure-jupyter
-fi
-
-if cat ${PIPFILE} | grep matplotlib >/dev/null 2>&1
-then
-    ${CURDIR}/configure-matplotlib
-fi
+${CURDIR}/configure-ipython
+${CURDIR}/configure-jupyter
+${CURDIR}/configure-matplotlib

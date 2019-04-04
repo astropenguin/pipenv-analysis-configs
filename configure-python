@@ -1,8 +1,9 @@
 #!/bin/bash
 set -eu
 
+# Go to project home
 PROJ=$(pipenv --where 2>/dev/null)
-cd ${PROJ:?}
+cd ${PROJ:?Could not find project home}
 
 # Write environment variables to .env
 PYTHONPATH=${PROJ}
