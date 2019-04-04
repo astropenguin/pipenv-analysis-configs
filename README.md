@@ -1,6 +1,14 @@
 # pipenv-analysis-configs
 :penguin: Create IPython, Jupyter, matplotlib custom configs in a Pipenv's environment
 
+## Features
+
+- Create custom configs in a Pipenv's environment
+- Supported Python packages
+    - IPython (default profile)
+    - Jupyter (default kernel using IPython's profile)
+    - matplotlib (matplotlibrc and style directory)
+
 ## Usage
 
 ### Basic usage
