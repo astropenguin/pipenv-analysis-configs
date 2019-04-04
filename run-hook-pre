@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eu
+
+# Go to project home
+PROJ=$(pipenv --where 2>/dev/null)
+cd ${PROJ:?Could not find project home}
+
+# run hook if exists
+HOOK=${PROJ}/hooks/hook-pre
+
+if [[ -e ${HOOK} ]]
+then
+    pipenv run ${HOOK}
+fi

@@ -11,7 +11,9 @@ fi
 # run configuration scripts
 CURDIR="$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
+${CURDIR}/run-hook-pre
 ${CURDIR}/configure-python
 ${CURDIR}/configure-ipython
 ${CURDIR}/configure-jupyter
 ${CURDIR}/configure-matplotlib
+${CURDIR}/run-hook-post
