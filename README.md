@@ -33,3 +33,7 @@ $ echo 'hook-pre' > hooks/hook-pre
 $ echo 'hook-post' > hooks/hook-post
 $ etc/configure
 ```
+
+## Real-world examples
+
++ [astropenguin/pipenv-analysis-startup](https://github.com/astropenguin/pipenv-analysis-startup)
