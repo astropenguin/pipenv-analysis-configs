@@ -1,5 +1,6 @@
 #!/bin/bash
 set -eu
+shopt -s nullglob
 
 # Go to project home
 PROJ=$(pipenv --where 2>/dev/null)
