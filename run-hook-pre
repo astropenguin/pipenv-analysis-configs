@@ -6,9 +6,7 @@ PROJ=$(pipenv --where 2>/dev/null)
 cd ${PROJ:?Could not find project home}
 
 # run hook if exists
-HOOK=${PROJ}/hooks/hook-pre
-
-if [[ -e ${HOOK} ]]
-then
+for HOOK in ${PROJ}/hooks/hook-pre*
+do
     pipenv run ${HOOK}
-fi
+done
