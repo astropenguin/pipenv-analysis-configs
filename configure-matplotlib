@@ -6,7 +6,7 @@ PROJ=$(pipenv --where 2>/dev/null)
 cd ${PROJ:?Could not find project home}
 
 # Skip configuration if not installed
-if ! cat ${PROJ}/Pipfile | grep matplotlib >/dev/null 2>&1
+if ! pip list | grep matplotlib >/dev/null 2>&1
 then
     exit 0
 fi
